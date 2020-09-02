@@ -11,13 +11,20 @@ import { Task } from '../../models/task.model';
 export class TaskViewComponent implements OnInit {
 
   tasks: Task[];
+  config: any;
 
-  constructor(private route: ActivatedRoute, private taskService: TaskService) { }
+  constructor(private route: ActivatedRoute, private taskService: TaskService) {
+  }
 
   ngOnInit(): void {
     this.taskService.get().subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-    })
+      this.config = {
+          itemsPerPage: 5,
+          currentPage: 1,
+          totalItems: this.tasks.length
+      };
+    });
   }
 
   onTaskClick(task: Task) {
@@ -25,4 +32,8 @@ export class TaskViewComponent implements OnInit {
       task.completed = !task.completed;
     });
   }
+
+    pageChanged(event){
+        this.config.currentPage = event;
+    }
 }

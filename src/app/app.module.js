@@ -13,6 +13,7 @@ var app_component_1 = require("./app.component");
 var task_view_component_1 = require("./pages/task-view/task-view.component");
 var http_1 = require("@angular/common/http");
 var new_task_component_1 = require("./pages/new-task/new-task.component");
+var ngx_pagination_1 = require("ngx-pagination");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +27,8 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
-                http_1.HttpClientModule
+                http_1.HttpClientModule,
+                ngx_pagination_1.NgxPaginationModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

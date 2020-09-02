@@ -16,12 +16,20 @@ var TaskViewComponent = (function () {
         var _this = this;
         this.taskService.get().subscribe(function (tasks) {
             _this.tasks = tasks;
+            _this.config = {
+                itemsPerPage: 5,
+                currentPage: 1,
+                totalItems: _this.tasks.length
+            };
         });
     };
     TaskViewComponent.prototype.onTaskClick = function (task) {
         this.taskService.complete(task).subscribe(function () {
             task.completed = !task.completed;
         });
+    };
+    TaskViewComponent.prototype.pageChanged = function (event) {
+        this.config.currentPage = event;
     };
     TaskViewComponent = __decorate([
         core_1.Component({

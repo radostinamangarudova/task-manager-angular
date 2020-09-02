@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TaskViewComponent } from './pages/task-view/task-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
