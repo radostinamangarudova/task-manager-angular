@@ -11,6 +11,7 @@ var core_1 = require("@angular/core");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var task_view_component_1 = require("./pages/task-view/task-view.component");
+var http_1 = require("@angular/common/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,6 +24,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
+                http_1.HttpClientModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

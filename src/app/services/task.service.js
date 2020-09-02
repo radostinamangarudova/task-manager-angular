@@ -7,22 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var task_view_component_1 = require("./pages/task-view/task-view.component");
-var new_task_component_1 = require("./pages/new-task/new-task.component");
-var routes = [
-    { path: '', component: task_view_component_1.TaskViewComponent },
-    { path: 'new-task', component: new_task_component_1.NewTaskComponent }
-];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
+var TaskService = (function () {
+    function TaskService(serverReqService) {
+        this.serverReqService = serverReqService;
     }
-    AppRoutingModule = __decorate([
-        core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
+    TaskService.prototype.create = function (title, description) {
+        return this.serverReqService.post('tasks', { title: title, description: description });
+    };
+    TaskService = __decorate([
+        core_1.Injectable({
+            providedIn: 'root'
         })
-    ], AppRoutingModule);
-    return AppRoutingModule;
+    ], TaskService);
+    return TaskService;
 }());
-exports.AppRoutingModule = AppRoutingModule;
+exports.TaskService = TaskService;

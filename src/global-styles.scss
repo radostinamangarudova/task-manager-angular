@@ -4,3 +4,7 @@ $white: #ffffff;
 $light-pink: #FFE6EE;
 $mid-pink: #FFDBE9;
 $pink: #ff8fad;
+
+.modal-card-body input:not(:last-child) {
+  margin-bottom: 0.5em;
+}
