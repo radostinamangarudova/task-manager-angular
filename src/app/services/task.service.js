@@ -11,6 +11,9 @@ var TaskService = (function () {
     function TaskService(serverReqService) {
         this.serverReqService = serverReqService;
     }
+    TaskService.prototype.get = function () {
+        return this.serverReqService.get('tasks');
+    };
     TaskService.prototype.create = function (title, description) {
         return this.serverReqService.post('tasks', { title: title, description: description });
     };

@@ -3,7 +3,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Add New Task</p>
-            <button class="delete" aria-label="close"></button>
+            <button class="delete" aria-label="close" routerLink="/"></button>
         </header>
         <section class="modal-card-body">
             <div class=""></div>
@@ -13,7 +13,7 @@
         </section>
         <footer class="modal-card-foot">
             <button class="button is-success" (click)="createTask(taskTitle.value, taskDesc.value)">Save</button>
-            <button class="button">Cancel</button>
+            <button class="button" routerLink="/">Cancel</button>
         </footer>
     </div>
 </div>

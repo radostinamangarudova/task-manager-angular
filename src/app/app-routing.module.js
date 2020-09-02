@@ -11,8 +11,9 @@ var router_1 = require("@angular/router");
 var task_view_component_1 = require("./pages/task-view/task-view.component");
 var new_task_component_1 = require("./pages/new-task/new-task.component");
 var routes = [
-    { path: '', component: task_view_component_1.TaskViewComponent },
-    { path: 'new-task', component: new_task_component_1.NewTaskComponent }
+    { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+    { path: 'new-task', component: new_task_component_1.NewTaskComponent },
+    { path: 'tasks', component: task_view_component_1.TaskViewComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

@@ -8,9 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var TaskViewComponent = (function () {
-    function TaskViewComponent() {
+    function TaskViewComponent(route, taskService) {
+        this.route = route;
+        this.taskService = taskService;
     }
     TaskViewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.taskService.get().subscribe(function (tasks) {
+            _this.tasks = tasks;
+        });
     };
     TaskViewComponent = __decorate([
         core_1.Component({

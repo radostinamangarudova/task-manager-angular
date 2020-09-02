@@ -4,16 +4,16 @@
             <div class="top-bar">
                 <h1 class="title">Tasks</h1>
                 <div class="is-right">
-                    <button class="button add-task-btn">
+                    <button class="button add-task-btn" routerLink="/new-task">
                         <i class="fas fa-plus-circle add-task-icon"></i> Add Task
                     </button>
                 </div>
             </div>
 
             <!-- Task Elements -->
-            <div class="task">
+            <div class="task" *ngFor="let task of tasks">
                 <div class="task-title">
-                    <p>Title of the task</p>
+                    <p>{{ task.title }}</p>
                 </div>
                 <div class="task-buttons">
                     <button class="button">

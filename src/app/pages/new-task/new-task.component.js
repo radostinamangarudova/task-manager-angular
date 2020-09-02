@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var NewTaskComponent = (function () {
-    function NewTaskComponent(router, taskService) {
+    function NewTaskComponent(route, router, taskService) {
+        this.route = route;
         this.router = router;
         this.taskService = taskService;
     }
@@ -16,8 +17,8 @@ var NewTaskComponent = (function () {
     };
     NewTaskComponent.prototype.createTask = function (title, description) {
         var _this = this;
-        this.taskService.create(title, description).subscribe(function (res) {
-            _this.router.navigate(['', res.id]);
+        this.taskService.create(title, description).subscribe(function (newTask) {
+            _this.router.navigate(['tasks']);
         });
     };
     NewTaskComponent = __decorate([
