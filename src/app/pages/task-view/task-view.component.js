@@ -18,6 +18,11 @@ var TaskViewComponent = (function () {
             _this.tasks = tasks;
         });
     };
+    TaskViewComponent.prototype.onTaskClick = function (task) {
+        this.taskService.complete(task).subscribe(function () {
+            task.completed = !task.completed;
+        });
+    };
     TaskViewComponent = __decorate([
         core_1.Component({
             selector: 'app-task-view',

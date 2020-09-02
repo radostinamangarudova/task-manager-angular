@@ -17,6 +17,11 @@ var TaskService = (function () {
     TaskService.prototype.create = function (title, description) {
         return this.serverReqService.post('tasks', { title: title, description: description });
     };
+    TaskService.prototype.complete = function (task) {
+        return this.serverReqService.patch("tasks/" + task.id, {
+            completed: !task.completed
+        });
+    };
     TaskService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
