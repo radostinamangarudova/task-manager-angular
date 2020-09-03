@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var TaskViewComponent = (function () {
-    function TaskViewComponent(route, taskService) {
+    function TaskViewComponent(route, taskService, router) {
         this.route = route;
         this.taskService = taskService;
+        this.router = router;
     }
     TaskViewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -21,6 +22,13 @@ var TaskViewComponent = (function () {
                 currentPage: 1,
                 totalItems: _this.tasks.length
             };
+        });
+    };
+    TaskViewComponent.prototype.deleteTask = function (task) {
+        var _this = this;
+        this.taskService.delete(task.id).subscribe(function (res) {
+            _this.tasks = _this.tasks.filter(function (val) { return val.id !== task.id; });
+            _this.router.navigate(['/tasks']);
         });
     };
     TaskViewComponent.prototype.onTaskClick = function (task) {

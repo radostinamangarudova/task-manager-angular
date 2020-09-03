@@ -17,9 +17,13 @@ export class TaskService {
     return this.serverReqService.post('tasks', { title, description });
   }
 
+  delete(taskId: string) {
+    return this.serverReqService.delete(`tasks/${taskId}`);
+  }
+
   complete(task: Task) {
-    return this.serverReqService.patch(`tasks/${task.id}`, {
-      completed: !task.completed
-    });
+      return this.serverReqService.patch(`tasks/${task.id}`, {
+          completed: !task.completed
+      });
   }
 }

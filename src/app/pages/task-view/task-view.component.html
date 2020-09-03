@@ -11,7 +11,7 @@
             </div>
 
             <!-- Task Elements -->
-            <div *ngIf="tasks">
+            <div *ngIf="tasks && tasks.length > 0">
                 <div class="task" *ngFor="let task of tasks | paginate: config" (click)="onTaskClick(task)" [ngClass]="{ 'completed': task.completed }">
                     <div class="task-title">
                         <p>{{ task.title }}</p>
@@ -23,7 +23,7 @@
                                 <i class="fas fa-edit"></i>
                             </div>
                         </button>
-                        <button class="button is-danger">
+                        <button class="button is-danger" (click)="deleteTask(task)">
                             <div class="icon">
                                 <i class="fas fa-trash"></i>
                             </div>
@@ -48,7 +48,7 @@
                     </div>
                 </pagination-template>
             </div>
-            <p *ngIf="!tasks">No tasks added yet.</p>
+            <p *ngIf="!tasks || tasks.length === 0">No tasks added yet.</p>
         </div>
     </div>
 </div>
