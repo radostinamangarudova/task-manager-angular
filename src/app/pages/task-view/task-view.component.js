@@ -15,7 +15,8 @@ var TaskViewComponent = (function () {
     TaskViewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.taskService.get().subscribe(function (tasks) {
-            _this.tasks = tasks;
+            _this.tasks = tasks.sort(function (a, b) { return a['id'] < b['id'] ? 1 : a['id'] === b['id'] ? 0 : -1; });
+            ;
             _this.config = {
                 itemsPerPage: 5,
                 currentPage: 1,
