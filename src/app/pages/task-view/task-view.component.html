@@ -12,7 +12,7 @@
 
             <!-- Task Elements -->
             <div *ngIf="tasks && tasks.length > 0">
-                <div class="task" *ngFor="let task of tasks | paginate: config" (click)="onTaskClick(task)" [ngClass]="{ 'completed': task.completed }">
+                <div class="task" *ngFor="let task of tasks | paginate: config" (click)="tasks.indexOf(task.id) !== -1 ? onTaskClick(task) : false" [ngClass]="{ 'completed': task.completed }">
                     <div class="task-title">
                         <p>{{ task.title }}</p>
                         <span data-toggle="tooltip" title="{{task.description}}"></span>
