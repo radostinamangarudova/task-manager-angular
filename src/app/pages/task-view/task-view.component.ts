@@ -18,7 +18,7 @@ export class TaskViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.get().subscribe((tasks: Task[]) => {
-      this.tasks = tasks.sort((a, b) => a['id'] < b['id'] ? 1 : a['id'] === b['id'] ? 0 : -1);;
+      this.tasks = tasks.sort((a, b) => a['id'] < b['id'] ? 1 : a['id'] === b['id'] ? 0 : -1);
       this.config = {
           itemsPerPage: 5,
           currentPage: 1,
