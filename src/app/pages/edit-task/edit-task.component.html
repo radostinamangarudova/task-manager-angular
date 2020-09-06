@@ -11,7 +11,7 @@
                     <div class="field">
                         <label class="label">Title</label>
                         <div class="control">
-                            <input class="input" type="text" value="{title}" formControlName="title"
+                            <input class="input" type="text" value="{{title}}" formControlName="title"
                                    [ngClass]="{'is-danger': editTaskForm.get('title').touched && editTaskForm.get('title').invalid}"
                                    placeholder="Type task title here ...">
                         </div>
@@ -25,9 +25,9 @@
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
-                            <textarea class="textarea" value="description" formControlName="description"
+                            <textarea class="textarea" formControlName="description"
                                       [ngClass]="{'is-danger': editTaskForm.get('description').touched && editTaskForm.get('description').invalid}"
-                                      placeholder="Type task description here ...">
+                                      placeholder="Type task description here ...">{{description}}
                             </textarea>
                         </div>
                     <p class="help is-danger" *ngIf="editTaskForm.get('description').touched && editTaskForm.get('description').invalid">

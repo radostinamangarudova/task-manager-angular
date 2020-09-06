@@ -17,7 +17,7 @@
                         <p>{{ task.title }}</p>
                     </div>
                     <div class="task-buttons">
-                        <button class="button" [routerLink]="['/edit-task', task.id]">
+                        <button class="button" [routerLink]="['/edit-task']" [queryParams]="{id: task.id, title: task.title, desc: task.description}">
                             <div class="icon">
                                 <i class="fas fa-edit"></i>
                             </div>

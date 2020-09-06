@@ -14,9 +14,11 @@ export class EditTaskComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private taskService: TaskService) { }
 
   id: string;
+  title: string;
+  description: string;
 
   editTaskForm = new FormGroup({
-    title: new FormControl('', [
+    title: new FormControl(this.title, [
       Validators.required,
       Validators.maxLength(250),
       Validators.minLength(8)
@@ -25,11 +27,13 @@ export class EditTaskComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.route.params
+    this.route.queryParams
       .subscribe(params => {
-          this.id = params.id
-        }
-      );
+        this.id = params.id,
+        this.editTaskForm.get('title').patchValue(params.title);
+        this.editTaskForm.get('description').patchValue(params.desc);
+      }
+    );
   }
 
   onSave() {
