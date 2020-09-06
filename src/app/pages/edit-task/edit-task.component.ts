@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router} from '@angular/router';
 import { Task } from '../../models/task.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-task',
@@ -13,21 +14,27 @@ export class EditTaskComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private taskService: TaskService) { }
 
   id: string;
-  title: string;
-  description: string;
+
+  editTaskForm = new FormGroup({
+    title: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(250),
+      Validators.minLength(8)
+    ]),
+    description: new FormControl('', Validators.maxLength(10000))
+  });
 
   ngOnInit() {
-    this.route.queryParams
+    this.route.params
       .subscribe(params => {
-          this.id = params.id;
-          this.title = params.title;
-          this.description = params.description;
+          this.id = params.id
         }
       );
   }
 
-  editTask(title: string, description: string) {
-    this.taskService.edit(this.id, title, description).subscribe((task: Task) => {
+  onSave() {
+    let formValues = this.editTaskForm.value;
+    this.taskService.edit(this.id, formValues.title, formValues.description).subscribe((task: Task) => {
         this.router.navigate(['tasks']);
     });
   }

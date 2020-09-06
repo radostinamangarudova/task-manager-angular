@@ -5,15 +5,40 @@
             <p class="modal-card-title">Add New Task</p>
             <button class="delete" aria-label="close" routerLink="/"></button>
         </header>
-        <section class="modal-card-body">
-            <div class=""></div>
-            <input #taskTitle class="input" type="text" placeholder="Type task title here ...">
-            <div class="p16"></div>
-            <textarea #taskDesc class="textarea" placeholder="Type task description here ..."></textarea>
-        </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" (click)="createTask(taskTitle.value, taskDesc.value)">Save</button>
-            <button class="button" routerLink="/">Cancel</button>
-        </footer>
+        <form name="createTaskForm" [formGroup]="createTaskForm" (ngSubmit)="createTaskForm.valid && onSave()">
+          <section class="modal-card-body">
+              <div class=""></div>
+              <div class="field">
+                  <label class="label">Title</label>
+                  <div class="control">
+                      <input class="input" type="text" formControlName="title"
+                             [ngClass]="{'is-danger': createTaskForm.get('title').touched && createTaskForm.get('title').invalid}"
+                             placeholder="Type task title here ...">
+                  </div>
+                  <p class="help is-danger" *ngIf="createTaskForm.get('title').touched && createTaskForm.get('title').invalid">
+                      <span *ngIf="createTaskForm.get('title').errors.required">Title is required.</span>
+                      <span *ngIf="createTaskForm.get('title').errors.maxlength">Title must be maximum 250 characters.</span>
+                      <span *ngIf="createTaskForm.get('title').errors.minlength">Title must be at least 8 characters.</span>
+                  </p>
+              </div>
+              <div class="p16"></div>
+              <div class="field">
+                  <label class="label">Description</label>
+                    <div class="control">
+                        <textarea class="textarea" formControlName="description"
+                               [ngClass]="{'is-danger': createTaskForm.get('description').touched && createTaskForm.get('description').invalid}"
+                                  placeholder="Type task description here ...">
+                        </textarea>
+                    </div>
+                  <p class="help is-danger" *ngIf="createTaskForm.get('description').touched && createTaskForm.get('description').invalid">
+                      <span *ngIf="createTaskForm.get('description').errors.maxlength">Description must be maximum 10k characters.</span>
+                  </p>
+              </div>
+          </section>
+          <footer class="modal-card-foot">
+              <button class="button is-success" [disabled]="!createTaskForm.valid">Save</button>
+              <button class="button" routerLink="/">Cancel</button>
+          </footer>
+        </form>
     </div>
 </div>

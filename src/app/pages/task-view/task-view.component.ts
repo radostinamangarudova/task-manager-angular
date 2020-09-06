@@ -40,7 +40,7 @@ export class TaskViewComponent implements OnInit {
     });
   }
 
-  pageChanged(event){
+  pageChanged(event) {
     this.config.currentPage = event;
   }
 }

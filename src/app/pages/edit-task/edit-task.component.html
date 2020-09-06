@@ -5,15 +5,40 @@
             <p class="modal-card-title">Edit Task</p>
             <button class="delete" aria-label="close" routerLink="/"></button>
         </header>
-        <section class="modal-card-body">
-            <div class=""></div>
-            <input #taskTitle class="input" value="{{title}}" type="text" placeholder="Type task title here ...">
-            <div class="p16"></div>
-            <textarea #taskDesc class="textarea" value="{{description}}" placeholder="Type task description here ..."></textarea>
-        </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" (click)="editTask(taskTitle.value, taskDesc.value)">Save</button>
-            <button class="button" routerLink="/">Cancel</button>
-        </footer>
+        <form name="editTaskForm"  [formGroup]="editTaskForm" (ngSubmit)="editTaskForm.valid && onSave()">
+            <section class="modal-card-body">
+                <div class=""></div>
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control">
+                            <input class="input" type="text" value="{title}" formControlName="title"
+                                   [ngClass]="{'is-danger': editTaskForm.get('title').touched && editTaskForm.get('title').invalid}"
+                                   placeholder="Type task title here ...">
+                        </div>
+                        <p class="help is-danger" *ngIf="editTaskForm.get('title').touched && editTaskForm.get('title').invalid">
+                            <span *ngIf="editTaskForm.get('title').errors.required">Title is required.</span>
+                            <span *ngIf="editTaskForm.get('title').errors.maxlength">Title must be maximum 250 characters.</span>
+                            <span *ngIf="editTaskForm.get('title').errors.minlength">Title must be at least 8 characters.</span>
+                        </p>
+                    </div>
+                    <div class="p16"></div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" value="description" formControlName="description"
+                                      [ngClass]="{'is-danger': editTaskForm.get('description').touched && editTaskForm.get('description').invalid}"
+                                      placeholder="Type task description here ...">
+                            </textarea>
+                        </div>
+                    <p class="help is-danger" *ngIf="editTaskForm.get('description').touched && editTaskForm.get('description').invalid">
+                      <span *ngIf="editTaskForm.get('description').errors.maxlength">Description must be maximum 10k characters.</span>
+                    </p>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success" [disabled]="!editTaskForm.valid">Save</button>
+              <button class="button" routerLink="/">Cancel</button>
+            </footer>
+        </form>
     </div>
 </div>
