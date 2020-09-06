@@ -17,6 +17,9 @@ var TaskService = (function () {
     TaskService.prototype.create = function (title, description) {
         return this.serverReqService.post('tasks', { title: title, description: description });
     };
+    TaskService.prototype.edit = function (taskId, title, description) {
+        return this.serverReqService.patch("tasks/" + taskId, { title: title, description: description });
+    };
     TaskService.prototype.delete = function (taskId) {
         return this.serverReqService.delete("tasks/" + taskId);
     };

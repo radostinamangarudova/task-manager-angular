@@ -1,0 +1,19 @@
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Edit Task</p>
+            <button class="delete" aria-label="close" routerLink="/"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class=""></div>
+            <input #taskTitle class="input" value="{{title}}" type="text" placeholder="Type task title here ...">
+            <div class="p16"></div>
+            <textarea #taskDesc class="textarea" value="{{description}}" placeholder="Type task description here ..."></textarea>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="editTask(taskTitle.value, taskDesc.value)">Save</button>
+            <button class="button" routerLink="/">Cancel</button>
+        </footer>
+    </div>
+</div>

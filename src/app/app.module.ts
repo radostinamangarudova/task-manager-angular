@@ -7,12 +7,14 @@ import { TaskViewComponent } from './pages/task-view/task-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskViewComponent,
     NewTaskComponent,
+    EditTaskComponent,
   ],
   imports: [
     BrowserModule,

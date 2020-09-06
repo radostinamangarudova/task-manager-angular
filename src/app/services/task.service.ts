@@ -17,6 +17,10 @@ export class TaskService {
     return this.serverReqService.post('tasks', { title, description });
   }
 
+  edit(taskId: string, title, description) {
+    return this.serverReqService.patch(`tasks/${taskId}`, { title, description });
+  }
+
   delete(taskId: string) {
     return this.serverReqService.delete(`tasks/${taskId}`);
   }
