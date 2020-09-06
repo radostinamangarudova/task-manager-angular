@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 
@@ -13,7 +13,7 @@ export class TaskViewComponent implements OnInit {
   tasks: Task[];
   config: any;
 
-  constructor(private route: ActivatedRoute, private taskService: TaskService, private router: Router) {
+  constructor(private route: ActivatedRoute, private taskService: TaskService) {
   }
 
   ngOnInit(): void {
@@ -30,7 +30,6 @@ export class TaskViewComponent implements OnInit {
   deleteTask(task: Task) {
     this.taskService.delete(task.id).subscribe((res: any) => {
       this.tasks = this.tasks.filter(val => val.id !== task.id);
-      this.router.navigate(['/tasks']);
     });
   }
 
