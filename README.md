@@ -29,3 +29,9 @@ $ npm install
 $ ng start
 ```
 more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Troubleshooting
+Angular CLI provides a development server that runs on localhost:4200 by default so if you are using a back-end server that runs on a different domain, you may have CORS issues if your server is not configured properly.
+
+Even if your backend is running on localhost, it will be listenning on a different port, which is treated as a different domain. This occurs CORS Issues in an angular app that could be fixed as follows: https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+
